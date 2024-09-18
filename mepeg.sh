@@ -1,8 +1,11 @@
+#!/bin/bash
+# shell wrapper
+
 rep=5
 step=150
 bed=$1
 nbase=200
-# Edit default reference sequence fa
+# Default reference sequence fasta file (need to be indexed)
 fa=""
 
 if [ "$#" -ne 1 ]; then
