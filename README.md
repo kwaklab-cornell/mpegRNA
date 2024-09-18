@@ -8,11 +8,11 @@ mepeg.sh SNP.bed [reference.fa]
 chromosome start end target_sequence
 
 ### Dependency
-bedtools
+bedtools : https://bedtools.readthedocs.io/en/latest/
 
-peglit
+peglit : https://github.com/sshen8/peglit
 
 ### Reference
-pegfinder
+pegfinder : https://github.com/rdchow/pegfinder
 
 python converion by chatSQ
