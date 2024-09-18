@@ -2,9 +2,11 @@ rep=5
 step=150
 bed=$1
 nbase=200
+# Edit default reference sequence fa
+fa=""
 
 if [ "$#" -ne 1 ]; then
-	echo "Usage: $0 <snp bed>" >&2
+	echo "Usage: $0 snp bed [ reference.fa ]" >&2
 	exit 1
 fi
 
@@ -15,7 +17,7 @@ mkdir -p _mepeg_tmp
 echo Extracting wild type and mutant sequences from human genome hg 38 1>&2
 awk -v n=$nbase '{print $1"\t"$2-n"\t"$2+n"\t"$4}' $bed > _mepeg_tmp/bed
 
-bedtools getfasta -fi ~/Work/shared/ref/hg38/hg38.fa -bed _mepeg_tmp/bed -bedOut > _mepeg_tmp/seqbed
+bedtools getfasta -fi $fa -bed _mepeg_tmp/bed -bedOut > _mepeg_tmp/seqbed
 
 paste <(cut -f1-3 $bed) <(cut -f4-5 _mepeg_tmp/seqbed) > _mepeg_tmp/seq2
 
